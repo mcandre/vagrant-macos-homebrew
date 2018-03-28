@@ -1,12 +1,15 @@
 # vagrant-macos-homebrew: a Vagrant box with Homebrew preinstalled
 
+# VAGRANT CLOUD
+
+https://app.vagrantup.com/mcandre/boxes/vagrant-macos-homebrew
+
 # EXAMPLE
 
 ```console
 $ vagrant up
 $ vagrant ssh -c 'brew install wget && wget --version'
-...
-GNU Wget 1.19.2 built on darwin17.3.0.
+GNU Wget 1.19.4 built on darwin17.3.0.
 
 -cares +digest -gpgme +https +ipv6 +iri +large-file -metalink +nls
 +ntlm +opie -psl +ssl/openssl
@@ -14,15 +17,15 @@ GNU Wget 1.19.2 built on darwin17.3.0.
 Wgetrc:
     /usr/local/etc/wgetrc (system)
 Locale:
-    /usr/local/Cellar/wget/1.19.2_1/share/locale
+    /usr/local/Cellar/wget/1.19.4_1/share/locale
 Compile:
     clang -DHAVE_CONFIG_H -DSYSTEM_WGETRC="/usr/local/etc/wgetrc"
-    -DLOCALEDIR="/usr/local/Cellar/wget/1.19.2_1/share/locale" -I.
-    -I../lib -I../lib -I/usr/local/opt/openssl@1.1/include -DNDEBUG
+    -DLOCALEDIR="/usr/local/Cellar/wget/1.19.4_1/share/locale" -I.
+    -I../lib -I../lib -I/usr/local/opt/openssl/include -DNDEBUG
 Link:
-    clang -DNDEBUG -lidn2 -L/usr/local/opt/openssl@1.1/lib -lssl
-    -lcrypto -ldl -lz ftp-opie.o openssl.o http-ntlm.o ../lib/libgnu.a
-    -liconv -lintl -Wl,-framework -Wl,CoreFoundation -lunistring
+    clang -DNDEBUG -lidn2 -L/usr/local/opt/openssl/lib -lssl -lcrypto
+    -ldl -lz ftp-opie.o openssl.o http-ntlm.o ../lib/libgnu.a -liconv
+    -lintl -Wl,-framework -Wl,CoreFoundation -lunistring
 
 Copyright (C) 2015 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later
@@ -36,10 +39,10 @@ Please send bug reports and questions to <bug-wget@gnu.org>.
 
 # REQUIREMENTS
 
-* [macOS Vagrant base box](https://github.com/mcandre/packer-templates/tree/master/macos)
 * [Vagrant](https://www.vagrantup.com)
-* [VMware](https://www.vmware.com)
+* [VirtualBox](https://www.virtualbox.org/) and/or [VMware](https://www.vmware.com)
 * [vagrant-vmware-{fusion,workstation} plugin](https://www.vagrantup.com/vmware/index.html)
+* [vagrant-package-vmware](https://github.com/bacongravy/vagrant-package-vmware)
 
 ## Recommended
 
@@ -47,4 +50,6 @@ Please send bug reports and questions to <bug-wget@gnu.org>.
 
 # EXPORT
 
-Unfortunately, VMware-provided Vagrant VM's are not easy to export for reuse in downstream Vagrant boxes.
+```console
+$ make boxes
+```
