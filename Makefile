@@ -1,9 +1,9 @@
 .PHONY: launch-vm clean-vm clean-boxes clean-vagrant-metadata
 
-launch-vm-virtualbox: Vagrantfile bootstrap.sh
+launch-vm-virtualbox: Vagrantfile bootstrap
 	vagrant up --provider virtualbox
 
-launch-vm-vmware: Vagrantfile bootstrap.sh
+launch-vm-vmware: Vagrantfile bootstrap
 	vagrant up --provider vmware_desktop
 
 clean-vm:
